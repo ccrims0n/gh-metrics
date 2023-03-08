@@ -264,10 +264,10 @@ module.exports = {
           }
           `;
   },
-  pullRequestsQuery: function (account, repo, pageSize, after) {
+  pullRequestsQuery: function (account, repo, pageSize) {
     return `{
             repository(owner: "${account}", name: "${repo}") {
-              pullRequests(first: ${pageSize}${after}) {
+              pullRequests(first: ${pageSize}, states: MERGED, orderBy: {field: UPDATED_AT, direction: DESC}) {
                 edges {
                   node {
                     additions
