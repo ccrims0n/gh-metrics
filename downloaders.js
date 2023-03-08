@@ -310,11 +310,7 @@ async function downloadPullRequestReviews(client, pr, pageSize, preFetched) {
         }
       );
       reviews = reviews.concat(currentPRReviews);
-      if (!node.reviews.hasNextPage) {
-        finished = true;
-      } else {
-        after = `, after: "${node.reviews.endCursor}"`;
-      }
+      finished = true
     }
     return reviews;
   } catch (err) {
